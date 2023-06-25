@@ -1,0 +1,10 @@
+.popup__save-button_confirm {
+    min-width: 358px;
+    margin-top: 0px;
+}
+
+@media (max-width:550px) {
+    .popup__save-button_confirm {
+        min-width: 223px;
+    }
+}

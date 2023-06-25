@@ -1,0 +1,10 @@
+.action__text_link {
+    transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.action__text_link:hover {
+    opacity: 0.6;
+}

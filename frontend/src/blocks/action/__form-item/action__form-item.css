@@ -1,0 +1,17 @@
+.action__form-item {
+    border: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(204, 204, 204, 1);
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: inherit;
+    color: #CCCCCC;;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.popup__form-item:focus {
+    color: rgba(255, 255, 255, 1);
+}

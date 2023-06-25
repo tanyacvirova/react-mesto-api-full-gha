@@ -1,0 +1,9 @@
+.element {
+    width: 282px;
+    height: 361px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-rows: 282px 1fr;
+    position: relative;
+}

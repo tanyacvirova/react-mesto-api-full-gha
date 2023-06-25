@@ -1,0 +1,11 @@
+.profile__title {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .profile__title {
+        justify-content: center;
+        transform: translateX(12px);
+    }
+}
