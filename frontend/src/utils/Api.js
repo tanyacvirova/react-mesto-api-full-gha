@@ -1,13 +1,13 @@
 class Api {
-    constructor(path, token) {
+    constructor(path) {
         this._path = path;
-        this._token = token;
+        // this._token = token;
     }
 
     _getHeaders() {
         return {
             'Content-Type': 'application/json',
-            authorization: this._token,
+            // authorization: this._token,
         }
     }
 
@@ -85,5 +85,5 @@ class Api {
     }
 }
 
-const api = new Api('https://mestoproject.tanyacvirova.nomoreparties.sbs/api', 'b0e1bcc1-0d9d-46ff-bf36-be0a9e1dd630');
+const api = new Api('https://mestoproject.tanyacvirova.nomoreparties.sbs/api');
 export default api;
