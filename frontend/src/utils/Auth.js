@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://mestoproject.tanyacvirova.nomoreparties.sbs/api';
 
 const makeRequest = (url, method, body, token) => {
     const options = {

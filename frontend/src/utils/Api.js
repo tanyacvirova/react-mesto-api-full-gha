@@ -85,5 +85,5 @@ class Api {
     }
 }
 
-const api = new Api('https://mesto.nomoreparties.co/v1/cohort-61', 'b0e1bcc1-0d9d-46ff-bf36-be0a9e1dd630');
+const api = new Api('https://mestoproject.tanyacvirova.nomoreparties.sbs/api', 'b0e1bcc1-0d9d-46ff-bf36-be0a9e1dd630');
 export default api;
