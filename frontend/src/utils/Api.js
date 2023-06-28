@@ -85,5 +85,5 @@ class Api {
     }
 }
 
-const api = new Api('https://mestoproject.tanyacvirova.nomoreparties.sbs/api');
+const api = new Api('https://backend.tanyacvirova.nomoreparties.sbs');
 export default api;

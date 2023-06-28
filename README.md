@@ -13,4 +13,4 @@ IP 158.160.98.202
 
 Frontend https://mestoproject.tanyacvirova.nomoreparties.sbs
 
-Backend https://mestoproject.tanyacvirova.nomoreparties.sbs/api
+Backend https://backend.tanyacvirova.nomoreparties.sbs

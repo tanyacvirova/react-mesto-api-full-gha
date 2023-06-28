@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://mestoproject.tanyacvirova.nomoreparties.sbs/api';
+export const BASE_URL = 'https://backend.tanyacvirova.nomoreparties.sbs';
 
 const makeRequest = (url, method, body, token) => {
     const options = {
