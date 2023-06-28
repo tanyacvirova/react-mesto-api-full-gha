@@ -23,15 +23,29 @@ import ProtectedRouteElement from './ProtectedRoute.js';
 import InfoTooltip from './InfoTooltip.js';
 
 function App() {
-  /* code from project 11 */
+  /* declare variables */
   const [isEditProfilePopupOpen, setEditProfilePopupStatus] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupStatus] = useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupStatus] = useState(false);
   const [selectedCard, setSelectedCardStatus] = useState({ name: '', link: '' });
   const [currentUser, setCurrentUser] = useState({ name: '', about: '' });
   const [cards, setCards] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState('');
+  const [isInfoTooltipOpen, setInfoTooltipStatus] = useState(false);
+  const [isSuccessfulReg, setSuccessfulReg] = useState(false);
+  const [userData, setUserData] = useState({
+    _id: "",
+    email: "",
+  });
+  const navigate = useNavigate();
+
+  /* actions with cards and user info */
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
     api.getCurrentUser()
       .then(info => {
         setCurrentUser(info);
@@ -39,9 +53,12 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [])
+  }, [isLoggedIn])
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
     api.getCards()
       .then(data => {
         setCards(data);
@@ -49,7 +66,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       })
-  }, [])
+  }, [isLoggedIn])
 
   function handleEditAvatarClick() {
     setEditAvatarPopupStatus(true);
@@ -72,7 +89,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
@@ -128,19 +145,10 @@ function App() {
   }
 
   /* registration and authorization  */
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState('');
-  const [isInfoTooltipOpen, setInfoTooltipStatus] = useState(false);
-  const [isSuccessfulReg, setSuccessfulReg] = useState(false);
-  const [userData, setUserData] = useState({
-    _id: "",
-    email: "",
-  });
-  const navigate = useNavigate();
-
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     setToken(jwt);
+    api.setToken(jwt);
   }, []);
 
   useEffect(() => {
@@ -150,7 +158,7 @@ function App() {
 
     auth.getUserData(token)
       .then((user) => {
-        setUserData(user);
+        setUserData({ _id: user._id, email: user.email });
         setIsLoggedIn(true);
         navigate("/");
       })
@@ -177,6 +185,7 @@ function App() {
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         setToken(res.token);
+        api.setToken(res.token);
       })
       .catch((err) => {
         console.log(err);
@@ -197,7 +206,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header userEmail={userData.data && userData.data.email} logout={logout} />
+        <Header userEmail={userData && userData.email} logout={logout} />
         <Routes>
           <Route path="/" element={<ProtectedRouteElement element={Main}
             onEditProfile={handleEditProfileClick}

@@ -1,13 +1,12 @@
 class Api {
     constructor(path) {
         this._path = path;
-        // this._token = token;
     }
 
     _getHeaders() {
         return {
             'Content-Type': 'application/json',
-            // authorization: this._token,
+            authorization: `Bearer ${this._token}`,
         }
     }
 
@@ -16,6 +15,10 @@ class Api {
             return res.json();
         }
         return Promise.reject(`Ошибка: ${res.status}`);
+    }
+
+    setToken(token) {
+        this._token = token;
     }
 
     getCards() {
