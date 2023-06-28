@@ -7,6 +7,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { PORT, DB_ADDRESS } = require('./config');
+const cors = require('./middlewares/cors');
 
 mongoose.connect(DB_ADDRESS);
 const app = express();
@@ -14,6 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(requestLogger);
+app.use(cors);
 app.use(routes);
 app.use(errorLogger);
 app.use(errors());
