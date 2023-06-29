@@ -170,9 +170,9 @@ function App() {
   function registration(formData) {
     auth.registerUser(formData)
       .then((res) => {
-        setToken(res.token);
         setInfoTooltipStatus(true);
         setSuccessfulReg(true);
+        navigate("/sign-in");
       }).catch((err) => {
         console.log(err);
         setInfoTooltipStatus(true);
@@ -189,6 +189,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        setInfoTooltipStatus(true);
       })
   }
 

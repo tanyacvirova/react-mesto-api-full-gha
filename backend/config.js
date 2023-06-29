@@ -1,5 +1,6 @@
 const PORT = 3000;
-const DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb';
+// const DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb';
+const DB_ADDRESS = 'mongodb://0.0.0.0:27017/mestodb';
 
 module.exports = {
   PORT,

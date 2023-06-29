@@ -8,11 +8,13 @@ const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { PORT, DB_ADDRESS } = require('./config');
 const cors = require('./middlewares/cors');
+const limiter = require('./middlewares/limiter');
 
 mongoose.connect(DB_ADDRESS);
 const app = express();
 
 app.use(express.json());
+app.use(limiter);
 app.use(helmet());
 app.use(requestLogger);
 app.use(cors);
